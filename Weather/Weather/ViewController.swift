@@ -19,6 +19,12 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+
+    
+    @IBAction func closeButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+ 
     
     @IBAction func whetherChange(_ sender: Any) {
         responseWeatherType()
