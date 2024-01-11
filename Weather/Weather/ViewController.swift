@@ -26,19 +26,26 @@ class ViewController: UIViewController {
     
     func responseWeatherType() {
         let weatherStrings = YumemiWeather.fetchWeatherCondition()
+        
+        var imageName = "sunny"
+        var tintColor = UIColor.red
+        
         switch weatherStrings {
         case "sunny":
-            self.weatherIcon.image = UIImage(named: "sunny")
-            self.weatherIcon.tintColor = .red
+            imageName = "sunny"
+            tintColor = UIColor.red
         case "cloudy":
-            self.weatherIcon.image = UIImage(named: "cloudy")
-            self.weatherIcon.tintColor = .gray
+            imageName = "cloudy"
+            tintColor = UIColor.gray
         case "rainy":
-            self.weatherIcon.image = UIImage(named: "rainy")
-            self.weatherIcon.tintColor = .blue
-        default: break
+            imageName = "rainy"
+            tintColor = UIColor.blue
+        default:
+            break
         }
+        
+        weatherIcon.image = UIImage(named: imageName)
+        weatherIcon.tintColor = tintColor
     }
     
 }
-
