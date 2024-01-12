@@ -18,6 +18,7 @@
 		93AB94FB2B4F790500B14EDB /* WeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AB94FA2B4F790500B14EDB /* WeatherTests.swift */; };
 		93AB95052B4F790500B14EDB /* WeatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AB95042B4F790500B14EDB /* WeatherUITests.swift */; };
 		93AB95072B4F790500B14EDB /* WeatherUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AB95062B4F790500B14EDB /* WeatherUITestsLaunchTests.swift */; };
+		93AC707A2B50F4ED005DC52B /* WeatherControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AC70792B50F4ED005DC52B /* WeatherControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		93AB95002B4F790500B14EDB /* WeatherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		93AB95042B4F790500B14EDB /* WeatherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherUITests.swift; sourceTree = "<group>"; };
 		93AB95062B4F790500B14EDB /* WeatherUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		93AC70792B50F4ED005DC52B /* WeatherControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 		93AB94D72B4F790300B14EDB = {
 			isa = PBXGroup;
 			children = (
+				93AC70792B50F4ED005DC52B /* WeatherControl.swift */,
 				93AB94E22B4F790300B14EDB /* Weather */,
 				93AB94F92B4F790500B14EDB /* WeatherTests */,
 				93AB95032B4F790500B14EDB /* WeatherUITests */,
@@ -269,6 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93AC707A2B50F4ED005DC52B /* WeatherControl.swift in Sources */,
 				93AB94E82B4F790300B14EDB /* ViewController.swift in Sources */,
 				93AB94E42B4F790300B14EDB /* AppDelegate.swift in Sources */,
 				93AB94E62B4F790300B14EDB /* SceneDelegate.swift in Sources */,
