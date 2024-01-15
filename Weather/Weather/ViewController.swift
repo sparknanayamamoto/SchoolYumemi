@@ -35,6 +35,12 @@ class ViewController: UIViewController {
 
 extension ViewController:YumemiDelegate {
     
+    func setErrorWeather(alertMessage: String) {
+        let dialog = UIAlertController(title: "確認", message: alertMessage, preferredStyle: .alert)
+        dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(dialog, animated: true, completion: nil)
+    }
+    
     func setWeatherImage(type: String) {
         
         var imageName = "sunny"
