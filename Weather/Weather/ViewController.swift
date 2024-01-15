@@ -29,6 +29,7 @@ class ViewController: UIViewController {
     
     @IBAction func whetherChange(_ sender: Any) {
         yumemiTenki.setYumemiWeather()
+        yumemiTenki.setWeatherResponse()
     }
     
 }

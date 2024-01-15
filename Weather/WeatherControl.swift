@@ -21,9 +21,15 @@ class YumemiTenki {
     var delegate: YumemiDelegate?
     
     func setYumemiWeather() {
+        let requestJson = """
+           {
+               "area":"tokyo", "date":"2020-04-01T12:00:00+09:00"
+           }
+           """
         do {
-            let weatherStrings = try YumemiWeather.fetchWeatherCondition(at: "")
-            self.delegate?.setWeatherImage(type: weatherStrings)
+            let weatherCondition = try YumemiWeather.fetchWeather(requestJson)
+            print(weatherCondition)
+          //   self.delegate?.setWeatherImage(type: weatherStrings)
         } catch YumemiWeatherError.unknownError {
             self.delegate?.setErrorWeather(alertMessage: "不明なエラーが発生しました")
             
@@ -33,3 +39,8 @@ class YumemiTenki {
     }
     
 }
+
+        
+
+
+
