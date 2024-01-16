@@ -35,17 +35,17 @@ class YumemiTenki {
             
             guard let jsonData =  weatherCondition.data(using: .utf8),
                   let json = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any],
-                  let min_temperature = json["min_temperature"] as? Int,
-                  let max_temperature = json["max_temperature"] as? Int,
-                  let weather_condition = json["weather_condition"] as? String
+                  let minTemperature = json["min_temperature"] as? Int,
+                  let maxTemperature = json["max_temperature"] as? Int,
+                  let weatherCondition = json["weather_condition"] as? String
                     
             else {
                 return
             }
             
-            self.delegate?.setWeatherImage(type: weather_condition)
-            self.delegate?.setMinTemperature(min: min_temperature)
-            self.delegate?.setMaxTemperature(max: max_temperature)
+            self.delegate?.setWeatherImage(type: weatherCondition)
+            self.delegate?.setMinTemperature(min: minTemperature)
+            self.delegate?.setMaxTemperature(max: maxTemperature)
             
             
         } catch YumemiWeatherError.unknownError {
