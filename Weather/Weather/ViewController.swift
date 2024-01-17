@@ -22,6 +22,28 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         yumemiTenki.delegate = self
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(ViewController.viewWillEnterForeground(_:)),
+            name: UIApplication.willEnterForegroundNotification,
+            object: nil)
+        
+        self.updateWeather()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    
+    
+    @objc func viewWillEnterForeground(_ notification: Notification) {
+        self.updateWeather()
+    }
+    
+    
+    func updateWeather () {
+        yumemiTenki.setYumemiWeather()
     }
     
     
@@ -35,7 +57,6 @@ class ViewController: UIViewController {
     }
     
 }
-
 
 
 extension ViewController:YumemiDelegate {
@@ -53,6 +74,7 @@ extension ViewController:YumemiDelegate {
         dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(dialog, animated: true, completion: nil)
     }
+    
     
     func setWeatherImage(type: String) {
         
