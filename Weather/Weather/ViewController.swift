@@ -31,10 +31,6 @@ class ViewController: UIViewController {
         self.updateWeather()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     
     
     @objc func viewWillEnterForeground(_ notification: Notification) {
