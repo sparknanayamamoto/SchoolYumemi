@@ -35,7 +35,7 @@ class YumemiTenki {
         do {
             let encoder = JSONEncoder()
             let yumemiJsonDate = try encoder.encode(requestJson)
-            // let yumemiJsonDate = try JSONDecoder().encode(requestJson)
+            
             guard let jsonData = String(data: yumemiJsonDate, encoding: .utf8)
             else {
                 return
