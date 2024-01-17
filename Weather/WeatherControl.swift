@@ -10,6 +10,11 @@ import UIKit
 import YumemiWeather
 
 
+struct WeatherArea: Codable {
+    var area: String
+    var date: String
+}
+
 // プロトコル
 protocol YumemiDelegate {
     func setWeatherImage(type: String)
@@ -24,14 +29,19 @@ class YumemiTenki {
     var delegate: YumemiDelegate?
     
     func setYumemiWeather() {
-        let requestJson = """
-           {
-               "area":"tokyo", "date":"2020-04-01T12:00:00+09:00"
-           }
-           """
+        
+        let requestJson = WeatherArea(area: "tokyo", date: "2020-04-01T12:00:00+09:00")
+        
         do {
-            let weatherCondition = try YumemiWeather.fetchWeather(requestJson)
-            // print(weatherCondition)
+            let encoder = JSONEncoder()
+            let yumemiJsonDate = try encoder.encode(requestJson)
+            // let yumemiJsonDate = try JSONDecoder().encode(requestJson)
+            guard let jsonData = String(data: yumemiJsonDate, encoding: .utf8)
+            else {
+                return
+            }
+            
+            let weatherCondition = try YumemiWeather.fetchWeather(jsonData)
             
             guard let jsonData =  weatherCondition.data(using: .utf8),
                   let json = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any],
@@ -46,7 +56,6 @@ class YumemiTenki {
             self.delegate?.setWeatherImage(type: weatherCondition)
             self.delegate?.setMinTemperature(min: minTemperature)
             self.delegate?.setMaxTemperature(max: maxTemperature)
-            
             
         } catch YumemiWeatherError.unknownError {
             self.delegate?.setErrorWeather(alertMessage: "不明なエラーが発生しました")
