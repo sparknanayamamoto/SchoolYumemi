@@ -94,6 +94,9 @@
                                     <action selector="whetherChange:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ivT-cv-e1y"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="fF3-22-Lhy">
+                                <rect key="frame" x="186.66666666666666" y="564.66666666666663" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -104,13 +107,16 @@
                             <constraint firstItem="NT7-Ff-Uu1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="OLR-5N-HGh"/>
                             <constraint firstItem="cqb-NB-HOZ" firstAttribute="centerX" secondItem="MXb-eL-zAB" secondAttribute="centerX" id="Vro-9w-ERO"/>
                             <constraint firstItem="cqb-NB-HOZ" firstAttribute="top" secondItem="NT7-Ff-Uu1" secondAttribute="bottom" constant="80" id="ZaC-BJ-VZh"/>
+                            <constraint firstItem="fF3-22-Lhy" firstAttribute="top" secondItem="NT7-Ff-Uu1" secondAttribute="bottom" constant="30" id="foT-c2-WeH"/>
                             <constraint firstItem="NT7-Ff-Uu1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="i4f-CD-VeI"/>
+                            <constraint firstItem="fF3-22-Lhy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wwk-B4-YFt"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="OvF-Cw-vcP"/>
                     <connections>
                         <outlet property="maxTemperatureLabel" destination="fJT-Es-awa" id="hXN-OA-dk3"/>
                         <outlet property="minTemperatureLabel" destination="MXb-eL-zAB" id="rFL-Ml-lyj"/>
+                        <outlet property="startActivityIndicator" destination="fF3-22-Lhy" id="xWw-dF-XZY"/>
                         <outlet property="weatherIcon" destination="Mme-qH-Dv2" id="tO7-7e-axu"/>
                     </connections>
                 </viewController>
