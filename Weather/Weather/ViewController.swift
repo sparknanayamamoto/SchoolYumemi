@@ -17,47 +17,38 @@ class ViewController: UIViewController {
     @IBOutlet weak var maxTemperatureLabel: UILabel!
     @IBOutlet weak var startActivityIndicator: UIActivityIndicatorView!
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         yumemiTenki.delegate = self
+        
+        startActivityIndicator.hidesWhenStopped = true
+        
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(ViewController.viewWillEnterForeground(_:)),
             name: UIApplication.willEnterForegroundNotification,
             object: nil)
-        
-        startActivityIndicator.hidesWhenStopped = true
     }
-    
-    
     
     @objc func viewWillEnterForeground(_ notification: Notification) {
         self.updateWeather()
     }
     
-    
     func updateWeather () {
         yumemiTenki.setYumemiWeather()
     }
     
-    
-    
     @IBAction func closeButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    
     
     @IBAction func whetherChange(_ sender: Any) {
         self.startActivityIndicator.startAnimating()
         yumemiTenki.setYumemiWeather()
     }
 }
-
-
 
 extension ViewController:YumemiDelegate {
     
