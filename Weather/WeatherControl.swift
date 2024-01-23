@@ -14,50 +14,50 @@ struct WeatherArea: Codable {
     var date: String
 }
 
-protocol YumemiDelegate {
-    func setWeatherImage(type: String)
-    func setErrorWeather(alertMessage: String)
-    func setMinTemperature(min: Int)
-    func setMaxTemperature(max: Int)
+struct WeatherResponse: Codable {
+    let weather_condition: String
+    let max_temperature: Int
+    let min_temperature: Int
 }
 
-class YumemiTenki {
-    var delegate: YumemiDelegate?
-    
-    func setYumemiWeather() {
+class YumemiTenkiDetail {
+  
+    func setYumemiWeatherInfo(completion: @escaping (Result<(String,Int,Int),Error>) -> ()) {
+        
         DispatchQueue.global().async {
             let requestJson = WeatherArea(area: "tokyo", date: "2020-04-01T12:00:00+09:00")
             
             do {
                 let encoder = JSONEncoder()
                 let yumemiJsonDate = try encoder.encode(requestJson)
-                guard let jsonData = String(data: yumemiJsonDate, encoding: .utf8)
-                else {
+                guard let jsonData = String(data: yumemiJsonDate, encoding: .utf8) else {
+                    completion(.failure(YumemiWeatherError.unknownError))
                     return
                 }
                 
                 let weatherCondition = try YumemiWeather.syncFetchWeather(jsonData)
                 
-                guard let jsonData =  weatherCondition.data(using: .utf8),
-                      let json = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any],
-                      let minTemperature = json["min_temperature"] as? Int,
-                      let maxTemperature = json["max_temperature"] as? Int,
-                      let weatherCondition = json["weather_condition"] as? String
-                else {
+                guard let jsonData =  weatherCondition.data(using: .utf8) else {
+                    completion(.failure(YumemiWeatherError.unknownError))
                     return
                 }
-                self.delegate?.setWeatherImage(type: weatherCondition)
-                self.delegate?.setMinTemperature(min: minTemperature)
-                self.delegate?.setMaxTemperature(max: maxTemperature)
+                
+                let decoder = JSONDecoder()
+                let weatherResponse = try decoder.decode(WeatherResponse.self, from: jsonData)
+                
+                DispatchQueue.main.async {
+                    completion(.success((weatherResponse.weather_condition, weatherResponse.max_temperature, weatherResponse.min_temperature)))
+                }
                 
             } catch YumemiWeatherError.unknownError {
-                self.delegate?.setErrorWeather(alertMessage: "不明なエラーが発生しました")
+                completion(.failure(YumemiWeatherError.unknownError))
+                
             } catch let error {
                 print(error)
             }
         }
     }
-    
+
 }
 
 
