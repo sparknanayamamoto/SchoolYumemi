@@ -42,9 +42,9 @@ class ViewController: UIViewController {
             
             switch result {
             case .success(let (weather, max, min)):
-                self.complitionWeather(weather: weather, max: max, min: min)
+                self.completionWeather(weather: weather, max: max, min: min)
             case .failure(let error):
-                self.complitionWeaterError(alertMessage: "Error: \(error.localizedDescription)")
+                self.completionWeaterError(alertMessage: "Error: \(error.localizedDescription)")
             }
         }
     }
@@ -57,7 +57,7 @@ class ViewController: UIViewController {
         reloadWeather()
     }
     
-    func complitionWeaterError(alertMessage: String) {
+    func completionWeaterError(alertMessage: String) {
         DispatchQueue.main.async {
             let dialog = UIAlertController(title: "確認", message: alertMessage, preferredStyle: .alert)
             dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -65,7 +65,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func complitionWeather(weather: String, max: Int, min: Int) {
+    func completionWeather(weather: String, max: Int, min: Int) {
         var imageName = "sunny"
         var tintColor = UIColor.red
         
