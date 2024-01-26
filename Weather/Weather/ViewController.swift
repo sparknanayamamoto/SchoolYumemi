@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-    
+        
         startActivityIndicator.hidesWhenStopped = true
         
         NotificationCenter.default.addObserver(
@@ -30,21 +30,23 @@ class ViewController: UIViewController {
             object: nil)
     }
     
+    
     @objc func viewWillEnterForeground(_ notification: Notification) {
         reloadWeather()
     }
     
     func reloadWeather(){
         startActivityIndicator.startAnimating()
-        yumemiTenkiDetail.setYumemiWeatherInfo { result in
+        Task {
+            let weatherString = await yumemiTenkiDetail.setYumemiWeatherInfo()
             
             self.startActivityIndicator.stopAnimating()
             
-            switch result {
+            switch weatherString {
             case .success(let (weather, max, min)):
-                self.completionWeather(weather: weather, max: max, min: min)
+                self.complitionWeather(weather: weather, max: max, min: min)
             case .failure(let error):
-                self.completionWeaterError(alertMessage: "Error: \(error.localizedDescription)")
+                self.complitionWeaterError(alertMessage: "Error: \(error.localizedDescription)")
             }
         }
     }
@@ -57,15 +59,13 @@ class ViewController: UIViewController {
         reloadWeather()
     }
     
-    func completionWeaterError(alertMessage: String) {
-        DispatchQueue.main.async {
-            let dialog = UIAlertController(title: "確認", message: alertMessage, preferredStyle: .alert)
-            dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.present(dialog, animated: true, completion: nil)
-        }
+    func complitionWeaterError(alertMessage: String) {
+        let dialog = UIAlertController(title: "確認", message: alertMessage, preferredStyle: .alert)
+        dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(dialog, animated: true, completion: nil)
     }
     
-    func completionWeather(weather: String, max: Int, min: Int) {
+    func complitionWeather(weather: String, max: Int, min: Int) {
         var imageName = "sunny"
         var tintColor = UIColor.red
         
@@ -84,11 +84,13 @@ class ViewController: UIViewController {
         }
         weatherIcon.image = UIImage(named: imageName)
         weatherIcon.tintColor = tintColor
-        minTemperatureLabel.text = String(max)
+        minTemperatureLabel.text = String(min)
         maxTemperatureLabel.text = String(max)
     }
     
 }
+
+
 
 
 
