@@ -84,7 +84,7 @@ class ViewController: UIViewController {
         }
         weatherIcon.image = UIImage(named: imageName)
         weatherIcon.tintColor = tintColor
-        minTemperatureLabel.text = String(max)
+        minTemperatureLabel.text = String(min)
         maxTemperatureLabel.text = String(max)
     }
     
