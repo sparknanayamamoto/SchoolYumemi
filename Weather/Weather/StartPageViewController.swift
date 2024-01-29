@@ -7,7 +7,42 @@
 
 import UIKit
 
+let weatherDetailList = WeatherDetailList()
+var areas: [AreaResponse] = []
+
+
 class StartPageViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    
+    @IBOutlet var weatherList: UIView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+    }
+    
+    
+    
+    
+
+    
+    func fetchWeatherList(){
+        Task {
+            let weatherString = await weatherDetailList.setYumemiWeatherList()
+            
+            switch weatherString {
+            case .success(let areas):
+                self.areas = areas
+                weatherList.reloadInputViews()
+                
+            case .failure(let error):
+                self.complitionWeaterError(alertMessage: "Error: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
     }
@@ -15,13 +50,6 @@ class StartPageViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         return cell
-    }
-    
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
 
