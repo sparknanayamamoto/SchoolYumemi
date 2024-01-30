@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     
     let yumemiTenkiDetail = YumemiTenkiDetail()
+    var area: AreaResponse?
     
     @IBOutlet weak var weatherIcon: UIImageView!
     @IBOutlet weak var minTemperatureLabel: UILabel!
@@ -22,6 +23,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         startActivityIndicator.hidesWhenStopped = true
+        showData()
         
         NotificationCenter.default.addObserver(
             self,
@@ -34,6 +36,32 @@ class ViewController: UIViewController {
     @objc func viewWillEnterForeground(_ notification: Notification) {
         reloadWeather()
     }
+    
+    
+    func showData() {
+        guard let area = self.area else { return }
+        
+        var weatherName = "sunny"
+        var tintColor = UIColor.red
+        switch area.info.weather_condition {
+        case "sunny":
+            weatherName = "sunny"
+            tintColor = UIColor.red
+        case "cloudy":
+            weatherName = "cloudy"
+            tintColor = UIColor.gray
+        case "rainy":
+            weatherName = "rainy"
+            tintColor = UIColor.blue
+        default:
+            break
+        }
+        self.weatherIcon.image = UIImage(named: weatherName)
+        self.weatherIcon.tintColor = tintColor
+        self.maxTemperatureLabel.text = String(area.info.max_temperature)
+        self.minTemperatureLabel.text = String(area.info.min_temperature)
+    }
+    
     
     func reloadWeather(){
         startActivityIndicator.startAnimating()
@@ -61,7 +89,7 @@ class ViewController: UIViewController {
     
     func complitionWeaterError(alertMessage: String) {
         let dialog = UIAlertController(title: "確認", message: alertMessage, preferredStyle: .alert)
-        dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        dialog.addAction(UIAlertAction(title: "リトライ", style: .default, handler: nil))
         self.present(dialog, animated: true, completion: nil)
     }
     

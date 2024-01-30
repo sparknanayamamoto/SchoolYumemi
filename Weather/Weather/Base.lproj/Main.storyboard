@@ -43,6 +43,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="BYZ-38-t0r" kind="show" identifier="toDetail" id="2Wg-bd-S35"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -50,18 +53,24 @@
                                     <outlet property="delegate" destination="o6f-oX-LQT" id="9ZO-gv-UvV"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="zXh-sE-Y9V">
+                                <rect key="frame" x="186.66666666666666" y="416" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="AnM-TN-4dO"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="a5d-Pc-a46" firstAttribute="top" secondItem="AnM-TN-4dO" secondAttribute="top" id="1MD-uZ-iLv"/>
+                            <constraint firstItem="zXh-sE-Y9V" firstAttribute="centerX" secondItem="kEC-wx-dF3" secondAttribute="centerX" id="2g2-l1-cJC"/>
                             <constraint firstItem="a5d-Pc-a46" firstAttribute="leading" secondItem="AnM-TN-4dO" secondAttribute="leading" id="Gmq-KW-ZJL"/>
                             <constraint firstItem="AnM-TN-4dO" firstAttribute="bottom" secondItem="a5d-Pc-a46" secondAttribute="bottom" id="O6W-f0-Rha"/>
                             <constraint firstItem="AnM-TN-4dO" firstAttribute="trailing" secondItem="a5d-Pc-a46" secondAttribute="trailing" id="qrq-lJ-IOP"/>
+                            <constraint firstItem="zXh-sE-Y9V" firstAttribute="centerY" secondItem="kEC-wx-dF3" secondAttribute="centerY" id="w0e-9a-A0O"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="weatherList" destination="kEC-wx-dF3" id="Ak5-LP-Ygz"/>
+                        <outlet property="listIndicator" destination="zXh-sE-Y9V" id="tnq-SP-86B"/>
+                        <outlet property="weatherList" destination="a5d-Pc-a46" id="NFy-si-wnJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dLC-l3-nKw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
