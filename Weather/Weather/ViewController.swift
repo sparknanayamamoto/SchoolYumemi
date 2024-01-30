@@ -30,6 +30,8 @@ class ViewController: UIViewController {
             selector: #selector(ViewController.viewWillEnterForeground(_:)),
             name: UIApplication.willEnterForegroundNotification,
             object: nil)
+        let selectArea = 
+        navigationItem.title = "\(String(describing: area))"
     }
     
     
@@ -80,7 +82,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func closeButton(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     @IBAction func whetherChange(_ sender: Any) {
