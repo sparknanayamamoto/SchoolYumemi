@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     
     let yumemiTenkiDetail = YumemiTenkiDetail()
-    var area: AreaResponse?
+    var areaInfo: AreaResponse?
     
     @IBOutlet weak var weatherIcon: UIImageView!
     @IBOutlet weak var minTemperatureLabel: UILabel!
@@ -23,15 +23,16 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         startActivityIndicator.hidesWhenStopped = true
-        showData()
         
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(ViewController.viewWillEnterForeground(_:)),
             name: UIApplication.willEnterForegroundNotification,
             object: nil)
-        let selectArea = 
-        navigationItem.title = "\(String(describing: area))"
+        if let areaName = areaInfo?.area {
+            navigationItem.title = areaName.rawValue
+        }
+        showData()
     }
     
     
@@ -41,7 +42,7 @@ class ViewController: UIViewController {
     
     
     func showData() {
-        guard let area = self.area else { return }
+        guard let area = self.areaInfo else { return }
         
         var weatherName = "sunny"
         var tintColor = UIColor.red

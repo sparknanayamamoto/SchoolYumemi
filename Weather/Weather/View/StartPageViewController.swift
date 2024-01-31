@@ -84,7 +84,7 @@ class StartPageViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func showError(alertMessage: String) {
         let dialog = UIAlertController(title: "確認", message: alertMessage, preferredStyle: .alert)
-        dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+        dialog.addAction(UIAlertAction(title: "リトライ", style: .default, handler: { action in
             self.fetchWeatherList()
         }))
         self.present(dialog, animated: true, completion: nil)
@@ -94,7 +94,7 @@ class StartPageViewController: UIViewController, UITableViewDelegate, UITableVie
         if segue.identifier == "toDetail",
            let indexPath = weatherList.indexPathForSelectedRow,
            let destination = segue.destination as? ViewController {
-            destination.area = areas[indexPath.row]
+            destination.areaInfo = areas[indexPath.row]
         }
     }
     
