@@ -11,6 +11,8 @@
 		9305DDF92B4FC18D00D974E9 /* LifeCycleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9305DDF82B4FC18D00D974E9 /* LifeCycleViewController.swift */; };
 		93442F9B2B63774C00E85DCA /* StartPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93442F9A2B63774C00E85DCA /* StartPageViewController.swift */; };
 		9381493B2B6732CF0052DE50 /* WeatherListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9381493A2B6732CF0052DE50 /* WeatherListModel.swift */; };
+		93A83E0C2B6A26DD00D55551 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A83E0B2B6A26DD00D55551 /* CollectionViewController.swift */; };
+		93A83E0E2B6A282800D55551 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A83E0D2B6A282800D55551 /* CollectionViewCell.swift */; };
 		93AB94E42B4F790300B14EDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AB94E32B4F790300B14EDB /* AppDelegate.swift */; };
 		93AB94E62B4F790300B14EDB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AB94E52B4F790300B14EDB /* SceneDelegate.swift */; };
 		93AB94E82B4F790300B14EDB /* WeatherDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AB94E72B4F790300B14EDB /* WeatherDetailViewController.swift */; };
@@ -44,6 +46,8 @@
 		9305DDF82B4FC18D00D974E9 /* LifeCycleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeCycleViewController.swift; sourceTree = "<group>"; };
 		93442F9A2B63774C00E85DCA /* StartPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPageViewController.swift; sourceTree = "<group>"; };
 		9381493A2B6732CF0052DE50 /* WeatherListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListModel.swift; sourceTree = "<group>"; };
+		93A83E0B2B6A26DD00D55551 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		93A83E0D2B6A282800D55551 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		93AB94E02B4F790300B14EDB /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93AB94E32B4F790300B14EDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93AB94E52B4F790300B14EDB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +96,7 @@
 				9305DDF82B4FC18D00D974E9 /* LifeCycleViewController.swift */,
 				93AB94E72B4F790300B14EDB /* WeatherDetailViewController.swift */,
 				93442F9A2B63774C00E85DCA /* StartPageViewController.swift */,
+				93A83E0B2B6A26DD00D55551 /* CollectionViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -131,6 +136,7 @@
 				93AB94E32B4F790300B14EDB /* AppDelegate.swift */,
 				93AB94E52B4F790300B14EDB /* SceneDelegate.swift */,
 				93AB94E92B4F790300B14EDB /* Main.storyboard */,
+				93A83E0D2B6A282800D55551 /* CollectionViewCell.swift */,
 				93AB94EC2B4F790500B14EDB /* Assets.xcassets */,
 				93AB94EE2B4F790500B14EDB /* LaunchScreen.storyboard */,
 				93A83D472B69DD2E00D55551 /* View */,
@@ -296,8 +302,10 @@
 			files = (
 				93AC707A2B50F4ED005DC52B /* WeatherDetailModel.swift in Sources */,
 				93AB94E82B4F790300B14EDB /* WeatherDetailViewController.swift in Sources */,
+				93A83E0E2B6A282800D55551 /* CollectionViewCell.swift in Sources */,
 				93AB94E42B4F790300B14EDB /* AppDelegate.swift in Sources */,
 				93AB94E62B4F790300B14EDB /* SceneDelegate.swift in Sources */,
+				93A83E0C2B6A26DD00D55551 /* CollectionViewController.swift in Sources */,
 				9381493B2B6732CF0052DE50 /* WeatherListModel.swift in Sources */,
 				93442F9B2B63774C00E85DCA /* StartPageViewController.swift in Sources */,
 				9305DDF92B4FC18D00D974E9 /* LifeCycleViewController.swift in Sources */,
