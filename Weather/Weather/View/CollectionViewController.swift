@@ -19,7 +19,21 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource {
         super.viewDidLoad()
         
         weatherCollectionView.dataSource = self
-        // Do any additional setup after loading the view.
+        fetchWeatherIcon()
+    }
+    
+    
+    func fetchWeatherIcon(){
+        Task {
+            let weatherString = await weatherDetailList.setYumemiWeatherList()
+            switch weatherString {
+            case .success(let areas):
+                self.areas = areas
+                weatherCollectionView.reloadData()
+            case .failure(let error):
+                self.showError(alertMessage: "Error: \(error.localizedDescription)")
+            }
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -46,6 +60,22 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource {
             break
         }
         return imageCell
+    }
+    
+    func showError(alertMessage: String) {
+        let dialog = UIAlertController(title: "確認", message: alertMessage, preferredStyle: .alert)
+        dialog.addAction(UIAlertAction(title: "リトライ", style: .default, handler: { action in
+            self.fetchWeatherIcon()
+        }))
+        self.present(dialog, animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toSelect",
+           let indexPath = weatherCollectionView.indexPathsForSelectedItems?.first,
+           let destination = segue.destination as? ViewController {
+            destination.areaInfo = areas[indexPath.row]
+        }
     }
 }
     
