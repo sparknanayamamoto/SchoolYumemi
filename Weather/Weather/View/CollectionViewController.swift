@@ -18,7 +18,12 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let flowLayout = weatherCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            flowLayout.minimumLineSpacing = 0
+            flowLayout.minimumInteritemSpacing = 0
+        }
         weatherCollectionView.dataSource = self
+        weatherCollectionView.delegate = self
         fetchWeatherIcon()
     }
     
@@ -78,20 +83,25 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource {
         }
     }
 }
-    
+
 extension CollectionViewController: UICollectionViewDelegateFlowLayout {
-        
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let cellSizeWidth: CGFloat = self.view.frame.width / 2
+        let cellSizeHeight: CGFloat = self.view.frame.height / 2
+        return CGSize(width: cellSizeWidth, height: cellSizeHeight / 2)
     }
     
+}
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+/*
+ // MARK: - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+ // Get the new view controller using segue.destination.
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 
