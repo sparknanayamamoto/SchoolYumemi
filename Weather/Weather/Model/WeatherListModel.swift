@@ -9,26 +9,13 @@ import Foundation
 import UIKit
 import YumemiWeather
 
-struct AreaRequest: Codable {
-    let areas: [String]
-    let date: String
-}
-
-struct AreaResponse: Codable {
-    let area: Area
-    let info: WeatherResponse
-}
-
-
-
 
 class WeatherDetailList {
-    
     
     func setYumemiWeatherList() async -> Result<[AreaResponse],Error> {
         let date = Date().ISO8601Format()
         let requestJson = AreaRequest(areas: [], date: date)
-    
+        
         do {
             let encoder = JSONEncoder()
             let yumemiJsonDate = try encoder.encode(requestJson)

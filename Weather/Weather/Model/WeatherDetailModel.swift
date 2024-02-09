@@ -9,16 +9,6 @@ import Foundation
 import UIKit
 import YumemiWeather
 
-struct WeatherArea: Codable {
-    var area: String
-    var date: String
-}
-
-struct WeatherResponse: Codable {
-    let weather_condition: String
-    let max_temperature: Int
-    let min_temperature: Int
-}
 
 class YumemiTenkiDetail {
     
